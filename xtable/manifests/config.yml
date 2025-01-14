@@ -1,0 +1,8 @@
+datasets:
+- partitionSpec: year:VALUE
+  tableBasePath: file:///home/baptvit/Documents/github/lakehouse-labs/xtable/warehouse/hudi.db/accounts
+  tableName: accounts
+sourceFormat: HUDI
+targetFormats:
+- DELTA
+- ICEBERG

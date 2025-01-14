@@ -1,0 +1,36 @@
+{
+  "format-version" : 2,
+  "table-uuid" : "e0aac298-dbdf-42e5-8d37-40c435ef696e",
+  "location" : "file:///home/baptvit/Documents/github/lakehouse-labs/notebooks/warehouse/iceberg/iceberg/accounts",
+  "last-sequence-number" : 0,
+  "last-updated-ms" : 1736808235919,
+  "last-column-id" : 0,
+  "current-schema-id" : 0,
+  "schemas" : [ {
+    "type" : "struct",
+    "schema-id" : 0,
+    "fields" : [ ]
+  } ],
+  "default-spec-id" : 0,
+  "partition-specs" : [ {
+    "spec-id" : 0,
+    "fields" : [ ]
+  } ],
+  "last-partition-id" : 999,
+  "default-sort-order-id" : 0,
+  "sort-orders" : [ {
+    "order-id" : 0,
+    "fields" : [ ]
+  } ],
+  "properties" : {
+    "owner" : "baptvit",
+    "write.parquet.compression-codec" : "zstd"
+  },
+  "current-snapshot-id" : -1,
+  "refs" : { },
+  "snapshots" : [ ],
+  "statistics" : [ ],
+  "partition-statistics" : [ ],
+  "snapshot-log" : [ ],
+  "metadata-log" : [ ]
+}

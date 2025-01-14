@@ -1,0 +1,125 @@
+x-presto-image: &presto-image trinodb/trino:${TRINO_VERSION:-468}
+x-hive-image:  &hive-image  apache/hive:${HIVE_VERSION:-3.1.3}
+x-postgres-image: &postgres-image postgres:${POSTGRES_VERSION:-13-alpine}
+x-minio-image: &minio-image minio/minio:${MINIO_VERSION:-RELEASE.2024-11-07T00-52-20Z}
+
+services:
+  # presto:
+  #   image: *presto-image
+  #   container_name: presto
+  #   ports:
+  #     - '8080:8080'
+
+  # metastore-db:
+  #   image: *postgres-image
+  #   container_name: metastore-db
+  #   environment:
+  #     POSTGRES_USER: 'postgres'
+  #     POSTGRES_PASSWORD: 'postgres'
+  #     POSTGRES_DB: 'metastore'
+  #   ports:
+  #     - '5433:5432'
+  #   volumes:
+  #     - vol-metastore-db:/var/lib/postgresql/data
+  #   healthcheck:
+  #     test: ["CMD-SHELL", "pg_isready -U postgres"]
+  #     interval: 5s
+  #     timeout: 5s
+  #     retries: 5
+  #   restart: on-failure
+
+  # metastore:
+  #   image: *hive-image
+  #   platform: linux/amd64
+  #   container_name: metastore
+  #   environment:
+  #     SERVICE_NAME: 'metastore'
+  #     SERVICE_OPTS: |- 
+  #       -Djavax.jdo.option.ConnectionDriverName=org.postgresql.Driver
+  #       -Djavax.jdo.option.ConnectionURL=jdbc:postgresql://metastore-db:5432/metastore
+  #       -Djavax.jdo.option.ConnectionUserName=postgres
+  #       -Djavax.jdo.option.ConnectionPassword=postgres
+  #     HIVE_AUX_JARS_PATH: /opt/hive/aux_jars/
+  #     DB_DRIVER: 'postgres'
+  #   ports:
+  #     - '9083:9083'
+  #   depends_on:
+  #     metastore-db: 
+  #       condition: service_healthy
+  #     metastore-init:
+  #       condition: service_completed_successfully
+  #   volumes:
+  #     - ./conf/hive-site.xml:/opt/hive/conf/hive-site.xml
+  #     - vol-metastore-warehouse:/opt/hive/data/warehouse
+  #     - vol-metastore-auxjars:/opt/hive/aux_jars/
+
+  # metastore-init:
+  #   image: *hive-image
+  #   platform: linux/amd64
+  #   container_name: metastore-init
+  #   user: 0:0
+  #   entrypoint: ["/bin/bash", "-c"]
+  #   command:
+  #     - |
+  #       apt-get update && apt-get install -y curl
+  #       curl --fail --show-error --create-dirs -O --output-dir /tmp/aux_jars https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk-bundle/1.12.262/aws-java-sdk-bundle-1.12.262.jar
+  #       curl --fail --show-error --create-dirs -O --output-dir /tmp/aux_jars https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-aws/3.3.4/hadoop-aws-3.3.4.jar
+  #       curl --fail --show-error --create-dirs -O --output-dir /tmp/aux_jars https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-auth/3.3.4/hadoop-auth-3.3.4.jar
+  #       curl --fail --show-error --create-dirs -O --output-dir /tmp/aux_jars https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-common/3.3.4/hadoop-common-3.3.4.jar
+  #       curl --fail --show-error --create-dirs -O --output-dir /tmp/aux_jars https://repo1.maven.org/maven2/org/apache/hadoop/thirdparty/hadoop-shaded-guava/1.1.1/hadoop-shaded-guava-1.1.1.jar
+  #       curl --fail --show-error --create-dirs -O --output-dir /tmp/aux_jars https://jdbc.postgresql.org/download/postgresql-42.7.1.jar
+  #   volumes:
+  #     - vol-metastore-auxjars:/tmp/aux_jars
+
+  minio:
+    image: *minio-image
+    container_name: minio
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    ports:
+      - "9010:9000"
+      - "9011:9001"
+    volumes:
+      - vol-minio-data:/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9010/minio/health/ready"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    restart: on-failure
+    networks:
+      - ranger
+
+  minio-init:
+    image: *minio-image
+    container_name: minio-init
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - |
+        mc alias set local http://minio:9000 minioadmin minioadmin
+        mc mb local/hive-warehouse
+        mc mb local/lakehouse-raw
+        mc mb local/lakehouse-staging
+        mc mb local/lakehouse-service
+    depends_on:
+      minio:
+        condition: service_healthy
+    restart: "no"
+    networks:
+      - ranger
+
+volumes:
+  vol-minio-data:
+    name: vol-minio-data
+  vol-metastore-db:
+    name: vol-metastore-db
+  vol-metastore-warehouse:
+    name: vol-metastore-warehouse
+  vol-metastore-auxjars:
+    name: vol-metastore-auxjars
+
+networks:
+  ranger:
+    name: rangernw

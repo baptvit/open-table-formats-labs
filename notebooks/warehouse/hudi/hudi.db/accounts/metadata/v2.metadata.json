@@ -1,0 +1,158 @@
+{
+  "format-version" : 2,
+  "table-uuid" : "6ec99ab3-9b62-4e81-9d69-4329fb2de823",
+  "location" : "file:///home/baptvit/Documents/github/lakehouse-labs/notebooks/warehouse/hudi/hudi.db/accounts",
+  "last-sequence-number" : 1,
+  "last-updated-ms" : 1736868079722,
+  "last-column-id" : 16,
+  "current-schema-id" : 0,
+  "schemas" : [ {
+    "type" : "struct",
+    "schema-id" : 0,
+    "fields" : [ {
+      "id" : 1,
+      "name" : "_hoodie_commit_time",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 2,
+      "name" : "_hoodie_commit_seqno",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 3,
+      "name" : "_hoodie_record_key",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 4,
+      "name" : "_hoodie_partition_path",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 5,
+      "name" : "_hoodie_file_name",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 6,
+      "name" : "country_code",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 7,
+      "name" : "created_at",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 8,
+      "name" : "email",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 9,
+      "name" : "iban",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 10,
+      "name" : "id",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 11,
+      "name" : "name",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 12,
+      "name" : "passport",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 13,
+      "name" : "swift",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 14,
+      "name" : "year",
+      "required" : false,
+      "type" : "int"
+    }, {
+      "id" : 15,
+      "name" : "month",
+      "required" : false,
+      "type" : "int"
+    }, {
+      "id" : 16,
+      "name" : "day",
+      "required" : false,
+      "type" : "int"
+    } ]
+  } ],
+  "default-spec-id" : 0,
+  "partition-specs" : [ {
+    "spec-id" : 0,
+    "fields" : [ {
+      "name" : "year",
+      "transform" : "identity",
+      "source-id" : 14,
+      "field-id" : 1000
+    }, {
+      "name" : "month",
+      "transform" : "identity",
+      "source-id" : 15,
+      "field-id" : 1001
+    } ]
+  } ],
+  "last-partition-id" : 1001,
+  "default-sort-order-id" : 0,
+  "sort-orders" : [ {
+    "order-id" : 0,
+    "fields" : [ ]
+  } ],
+  "properties" : {
+    "schema.name-mapping.default" : "[ {\n  \"field-id\" : 1,\n  \"names\" : [ \"_hoodie_commit_time\" ]\n}, {\n  \"field-id\" : 2,\n  \"names\" : [ \"_hoodie_commit_seqno\" ]\n}, {\n  \"field-id\" : 3,\n  \"names\" : [ \"_hoodie_record_key\" ]\n}, {\n  \"field-id\" : 4,\n  \"names\" : [ \"_hoodie_partition_path\" ]\n}, {\n  \"field-id\" : 5,\n  \"names\" : [ \"_hoodie_file_name\" ]\n}, {\n  \"field-id\" : 6,\n  \"names\" : [ \"country_code\" ]\n}, {\n  \"field-id\" : 7,\n  \"names\" : [ \"created_at\" ]\n}, {\n  \"field-id\" : 8,\n  \"names\" : [ \"email\" ]\n}, {\n  \"field-id\" : 9,\n  \"names\" : [ \"iban\" ]\n}, {\n  \"field-id\" : 10,\n  \"names\" : [ \"id\" ]\n}, {\n  \"field-id\" : 11,\n  \"names\" : [ \"name\" ]\n}, {\n  \"field-id\" : 12,\n  \"names\" : [ \"passport\" ]\n}, {\n  \"field-id\" : 13,\n  \"names\" : [ \"swift\" ]\n}, {\n  \"field-id\" : 14,\n  \"names\" : [ \"year\" ]\n}, {\n  \"field-id\" : 15,\n  \"names\" : [ \"month\" ]\n}, {\n  \"field-id\" : 16,\n  \"names\" : [ \"day\" ]\n} ]",
+    "write.metadata.delete-after-commit.enabled" : "true",
+    "write.data.path" : "file:///home/baptvit/Documents/github/lakehouse-labs/notebooks/warehouse/hudi/hudi.db/accounts",
+    "XTABLE_METADATA" : "{\"lastInstantSynced\":\"2025-01-14T12:17:35.454Z\",\"instantsToConsiderForNextSync\":[],\"version\":0}",
+    "write.parquet.compression-codec" : "zstd"
+  },
+  "current-snapshot-id" : 1999576976709308986,
+  "refs" : {
+    "main" : {
+      "snapshot-id" : 1999576976709308986,
+      "type" : "branch"
+    }
+  },
+  "snapshots" : [ {
+    "sequence-number" : 1,
+    "snapshot-id" : 1999576976709308986,
+    "timestamp-ms" : 1736868079686,
+    "summary" : {
+      "operation" : "overwrite",
+      "added-data-files" : "4",
+      "added-records" : "100",
+      "added-files-size" : "1760826",
+      "changed-partition-count" : "4",
+      "total-records" : "100",
+      "total-files-size" : "1760826",
+      "total-data-files" : "4",
+      "total-delete-files" : "0",
+      "total-position-deletes" : "0",
+      "total-equality-deletes" : "0"
+    },
+    "manifest-list" : "file:/home/baptvit/Documents/github/lakehouse-labs/notebooks/warehouse/hudi/hudi.db/accounts/metadata/snap-1999576976709308986-1-a7f0ab19-c309-4cd6-8c4f-f81a309dd481.avro",
+    "schema-id" : 0
+  } ],
+  "statistics" : [ ],
+  "snapshot-log" : [ {
+    "timestamp-ms" : 1736868079686,
+    "snapshot-id" : 1999576976709308986
+  } ],
+  "metadata-log" : [ {
+    "timestamp-ms" : 1736868079539,
+    "metadata-file" : "file:/home/baptvit/Documents/github/lakehouse-labs/notebooks/warehouse/hudi/hudi.db/accounts/metadata/v1.metadata.json"
+  } ]
+}

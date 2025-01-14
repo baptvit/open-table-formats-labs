@@ -1,0 +1,145 @@
+{
+  "format-version" : 2,
+  "table-uuid" : "92603dab-cec5-41da-bef1-41b7504f3a86",
+  "location" : "file:///home/baptvit/Documents/github/lakehouse-labs/notebooks/warehouse/iceberg/iceberg_db/accounts",
+  "last-sequence-number" : 1,
+  "last-updated-ms" : 1736808214641,
+  "last-column-id" : 11,
+  "current-schema-id" : 1,
+  "schemas" : [ {
+    "type" : "struct",
+    "schema-id" : 0,
+    "fields" : [ ]
+  }, {
+    "type" : "struct",
+    "schema-id" : 1,
+    "fields" : [ {
+      "id" : 1,
+      "name" : "country_code",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 2,
+      "name" : "created_at",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 3,
+      "name" : "email",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 4,
+      "name" : "iban",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 5,
+      "name" : "id",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 6,
+      "name" : "name",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 7,
+      "name" : "passport",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 8,
+      "name" : "swift",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 9,
+      "name" : "year",
+      "required" : false,
+      "type" : "int"
+    }, {
+      "id" : 10,
+      "name" : "month",
+      "required" : false,
+      "type" : "int"
+    }, {
+      "id" : 11,
+      "name" : "day",
+      "required" : false,
+      "type" : "int"
+    } ]
+  } ],
+  "default-spec-id" : 1,
+  "partition-specs" : [ {
+    "spec-id" : 0,
+    "fields" : [ ]
+  }, {
+    "spec-id" : 1,
+    "fields" : [ {
+      "name" : "year",
+      "transform" : "identity",
+      "source-id" : 9,
+      "field-id" : 1000
+    }, {
+      "name" : "month",
+      "transform" : "identity",
+      "source-id" : 10,
+      "field-id" : 1001
+    } ]
+  } ],
+  "last-partition-id" : 1001,
+  "default-sort-order-id" : 0,
+  "sort-orders" : [ {
+    "order-id" : 0,
+    "fields" : [ ]
+  } ],
+  "properties" : {
+    "owner" : "baptvit",
+    "overwriteSchema" : "true",
+    "changelog.enabled" : "true",
+    "write.parquet.compression-codec" : "zstd"
+  },
+  "current-snapshot-id" : 2782391853495691855,
+  "refs" : {
+    "main" : {
+      "snapshot-id" : 2782391853495691855,
+      "type" : "branch"
+    }
+  },
+  "snapshots" : [ {
+    "sequence-number" : 1,
+    "snapshot-id" : 2782391853495691855,
+    "timestamp-ms" : 1736808214641,
+    "summary" : {
+      "operation" : "append",
+      "spark.app.id" : "local-1736808187136",
+      "added-data-files" : "4",
+      "added-records" : "100",
+      "added-files-size" : "21640",
+      "changed-partition-count" : "4",
+      "total-records" : "100",
+      "total-files-size" : "21640",
+      "total-data-files" : "4",
+      "total-delete-files" : "0",
+      "total-position-deletes" : "0",
+      "total-equality-deletes" : "0",
+      "engine-version" : "3.5.3",
+      "app-id" : "local-1736808187136",
+      "engine-name" : "spark",
+      "iceberg-version" : "Apache Iceberg 1.7.1 (commit 4a432839233f2343a9eae8255532f911f06358ef)"
+    },
+    "manifest-list" : "file:/home/baptvit/Documents/github/lakehouse-labs/notebooks/warehouse/iceberg/iceberg_db/accounts/metadata/snap-2782391853495691855-1-2ebe129d-3b6d-4ea1-8046-4780e99813b9.avro",
+    "schema-id" : 1
+  } ],
+  "statistics" : [ ],
+  "partition-statistics" : [ ],
+  "snapshot-log" : [ {
+    "timestamp-ms" : 1736808214641,
+    "snapshot-id" : 2782391853495691855
+  } ],
+  "metadata-log" : [ {
+    "timestamp-ms" : 1736808210364,
+    "metadata-file" : "file:/home/baptvit/Documents/github/lakehouse-labs/notebooks/warehouse/iceberg/iceberg_db/accounts/metadata/v1.metadata.json"
+  } ]
+}

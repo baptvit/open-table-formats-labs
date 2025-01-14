@@ -1,0 +1,28 @@
+[project]
+name = "open-table-formats-labs"
+version = "0.1.0"
+description = "Experimentation with Delta, Iceberg, Hive and Big Data tools"
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+
+dependencies = [
+    "pyspark>=3.5.3,<4.0",
+    "delta-spark>=3.2.1,<4.0",
+    "pyiceberg[hive,s3fs,sql,sql-sqlite]>=0.8.1,<1.0",
+    "faker>=33.1.0,<34.0",
+    "acryl-datahub>=0.15.0.1",
+    "deltalake>=0.23.2",
+    "pandas>=2.2.3",
+    "getdaft>=0.4.2",
+    "polars>=1.19.0",
+]
+
+[dependency-groups]
+dev = [
+    "jupyterlab>=4.3.4",
+    "ruff>=0.8.4",
+]
+
+[tool.ruff]
+line-length = 100
+lint.select = ["F", "E", "W", "I001"]

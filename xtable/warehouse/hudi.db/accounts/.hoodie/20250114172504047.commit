@@ -1,0 +1,68 @@
+{
+  "partitionToWriteStats" : {
+    "year=2025" : [ {
+      "fileId" : "66945abe-8145-4e86-bcc4-4b015e28532e-0",
+      "path" : "year=2025/66945abe-8145-4e86-bcc4-4b015e28532e-0_0-20-151_20250114172504047.parquet",
+      "cdcStats" : null,
+      "prevCommit" : "20250114162008677",
+      "numWrites" : 20,
+      "numDeletes" : 0,
+      "numUpdateWrites" : 1,
+      "numInserts" : 1,
+      "totalWriteBytes" : 439662,
+      "totalWriteErrors" : 0,
+      "tempPath" : null,
+      "partitionPath" : "year=2025",
+      "totalLogRecords" : 0,
+      "totalLogFilesCompacted" : 0,
+      "totalLogSizeCompacted" : 0,
+      "totalUpdatedRecordsCompacted" : 0,
+      "totalLogBlocks" : 0,
+      "totalCorruptLogBlock" : 0,
+      "totalRollbackBlocks" : 0,
+      "fileSizeInBytes" : 439662,
+      "minEventTime" : null,
+      "maxEventTime" : null,
+      "runtimeStats" : {
+        "totalScanTime" : 0,
+        "totalUpsertTime" : 200,
+        "totalCreateTime" : 0
+      }
+    } ],
+    "year=2024" : [ {
+      "fileId" : "2744bc50-8dfa-42fa-b547-da83e2f96038-0",
+      "path" : "year=2024/2744bc50-8dfa-42fa-b547-da83e2f96038-0_1-20-152_20250114172504047.parquet",
+      "cdcStats" : null,
+      "prevCommit" : "20250114162008677",
+      "numWrites" : 84,
+      "numDeletes" : 0,
+      "numUpdateWrites" : 3,
+      "numInserts" : 3,
+      "totalWriteBytes" : 445886,
+      "totalWriteErrors" : 0,
+      "tempPath" : null,
+      "partitionPath" : "year=2024",
+      "totalLogRecords" : 0,
+      "totalLogFilesCompacted" : 0,
+      "totalLogSizeCompacted" : 0,
+      "totalUpdatedRecordsCompacted" : 0,
+      "totalLogBlocks" : 0,
+      "totalCorruptLogBlock" : 0,
+      "totalRollbackBlocks" : 0,
+      "fileSizeInBytes" : 445886,
+      "minEventTime" : null,
+      "maxEventTime" : null,
+      "runtimeStats" : {
+        "totalScanTime" : 0,
+        "totalUpsertTime" : 200,
+        "totalCreateTime" : 0
+      }
+    } ]
+  },
+  "compacted" : false,
+  "extraMetadata" : {
+    "schema" : "{\"type\":\"record\",\"name\":\"accounts_record\",\"namespace\":\"hoodie.accounts\",\"fields\":[{\"name\":\"country_code\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"created_at\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"email\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"iban\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"id\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"name\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"passport\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"swift\",\"type\":[\"null\",\"string\"],\"default\":null},{\"name\":\"year\",\"type\":[\"null\",\"int\"],\"default\":null},{\"name\":\"month\",\"type\":[\"null\",\"int\"],\"default\":null},{\"name\":\"day\",\"type\":[\"null\",\"int\"],\"default\":null}]}",
+    "__partition_columns" : "[\"year\"]"
+  },
+  "operationType" : "UPSERT"
+}

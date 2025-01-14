@@ -1,0 +1,4 @@
+catalog:
+  hudi:
+    type: iceberg
+    warehouse: file:///home/baptvit/Documents/github/lakehouse-labs/xtable/warehouse/
